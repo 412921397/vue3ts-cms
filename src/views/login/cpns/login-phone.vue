@@ -31,7 +31,7 @@ export default defineComponent({
     const phoneAction = () => {
       formRef.value?.validate((valid) => {
         if (valid) {
-          console.log("手机登录");
+          console.log("手机登录1");
         }
       });
     };
