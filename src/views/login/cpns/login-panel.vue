@@ -2,7 +2,7 @@
   <div class="login-panel">
     <h1 class="title">后台管理系统</h1>
     <el-tabs v-model="TabsValue" type="border-card" class="demo-tabs" :stretch="true">
-      <el-tab-pane>
+      <el-tab-pane :name="0">
         <template #label>
           <div class="content">
             <el-icon><UserFilled /></el-icon>
@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import LoginAccount from "./login-account.vue";
 import LoginPhone from "./login-phone.vue";
 
@@ -49,6 +49,10 @@ export default defineComponent({
       if (+TabsValue.value === 0) accountRef.value?.loginAction(isKeepPassword.value);
       if (+TabsValue.value === 1) phoneRef.value?.phoneAction();
     };
+
+    onMounted(() => {
+      console.log(TabsValue.value, "sssad");
+    });
 
     return { isKeepPassword, accountRef, phoneRef, TabsValue, handleLoginClick };
   }
